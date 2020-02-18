@@ -4,7 +4,7 @@ require 'kconv'
 
 url = 'https://yakkun.com/swsh/stats_list.htm'
 charset = URI.parse(url).read.charset
-html = URI.open(url) { |f| f.read }
+html = URI.open(url, &:read)
 doc = Nokogiri::HTML.parse(html.toutf8, nil, charset)
 
 csv_header = %w[No Name H A B C D S All]
